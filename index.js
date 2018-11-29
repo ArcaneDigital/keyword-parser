@@ -9,7 +9,7 @@ module.exports = function(text = [], n = 4) {
       .split(" ")
       .map(word => {
         return word
-          .replace(/[!@#$%^*()=_+|;:",.<>?']/g, "")
+          .replace(/©[!@#$%^*()=_+|;:",.<>?']/g, "")
           .replace("&", " and ")
           .replace(/\s\s+/g, " ")
           .trim()
@@ -54,10 +54,11 @@ module.exports = function(text = [], n = 4) {
   var keywords = [];
   for (var key in counts) {
     const percent = counts[key] / gramCounts[key.split(" ").length];
-    if (percent > 0.005)
+    if (percent > 0.0075)
       keywords.push({
         word: key,
         count: counts[key],
+        grams: key.split(" ").length,
         percent: percent.toPrecision(3)
       });
   }
