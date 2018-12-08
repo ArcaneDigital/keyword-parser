@@ -3,13 +3,14 @@ const stopwords = require("./stopwords.json");
 module.exports = function(text = [], n = 4) {
   var temp = [];
   var gramCounts = {};
+
   for (let t = 0; t < text.length; t++) {
     if (!text[t]) continue;
     const tokens = text[t]
       .split(" ")
       .map(word => {
         return word
-          .replace(/©[!@#$%^*()=_+|;:",.<>?']/g, "")
+          .replace(/[\[\]©•†”™—!®@#$%^*()=_+|;:",.<>?']/gim, "")
           .replace("&", " and ")
           .replace(/\s\s+/g, " ")
           .trim()
