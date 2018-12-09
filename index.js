@@ -10,7 +10,7 @@ module.exports = function(text = [], n = 4) {
       .split(" ")
       .map(word => {
         return word
-          .replace(/[\[\]©•†”™—!®@#$%^*()=_+|;:",.<>?']/gim, "")
+          .replace(/[\[\]©•†”™—~»·!®@#$%^*()=_+|;:",.<>?']/gim, "")
           .replace("&", " and ")
           .replace(/\s\s+/g, " ")
           .trim()
@@ -48,7 +48,6 @@ module.exports = function(text = [], n = 4) {
     }
   }
   var counts = {};
-  console.log(gramCounts);
   for (var i = 0; i < temp.length; i++) {
     counts[temp[i]] = counts[temp[i]] ? counts[temp[i]] + 1 : 1;
   }
