@@ -1,5 +1,6 @@
-const stopwords = require("./stopwords.json");
-
+const stopwords = require("./data/stopwords.json");
+const common = require("./data/common.json");
+const characters = require("./data/characters.json");
 module.exports = function(text = [], n = 4) {
   var temp = [];
   var gramCounts = {};
@@ -31,10 +32,11 @@ module.exports = function(text = [], n = 4) {
             const first = ngram[0];
             const last = ngram[ngram.length - 1];
             if (
-              !stopwords.includes(first) &&
-              !stopwords.includes(last) &&
-              phrase.length > 1 &&
-              isNaN(parseInt(phrase))
+              phrase.length > 2 &&
+              isNaN(parseInt(phrase)) &&
+              ![...stopwords, ...characters].includes(first) &&
+              ![...stopwords, ...characters].includes(last) &&
+              ![...common].includes(phrase)
             ) {
               temp.push(phrase);
               if (!gramCounts.hasOwnProperty(ngram.length))

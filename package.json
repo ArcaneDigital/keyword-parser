@@ -1,6 +1,6 @@
 {
   "name": "keyword-parser",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Parse keywords from text using ngrams and stopwords.",
   "main": "index.js",
   "scripts": {
