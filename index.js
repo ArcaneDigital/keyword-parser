@@ -56,7 +56,7 @@ module.exports = function(text = [], n = 4) {
   var keywords = [];
   for (var key in counts) {
     const percent = counts[key] / gramCounts[key.split(" ").length];
-    if (percent > 0.0075)
+    if (percent > 0.0075 && counts[key] > 1)
       keywords.push({
         word: key,
         count: counts[key],
